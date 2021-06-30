@@ -126,6 +126,16 @@
       layer=".interfaces.IBrowserLayer"
       />
 
+  <browser:page
+      name="tabular_view"
+      template="listing_tabular.pt"
+      menu="plone_displayviews"
+      title="Tabular view"
+      for="plone.app.contenttypes.behaviors.collection.ISyndicatableCollection"
+      class=".browser.TaxonomyCollectionView"
+      permission="zope2.View"
+      />
+
   <adapter
       zcml:condition="installed collective.collectionfilter"
       factory=".collectionfilter.groupby_modifier"
