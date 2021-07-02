@@ -71,7 +71,7 @@
                                          class string:$item_type_class $item_wf_state_class url;
                                          title item_type">
                          <img class="mime-icon"
-                                tal:attributes="src item/MimeTypeIcon">
+                                tal:attributes="src item/MimeTypeIcon" />
                       </a>
                       <a tal:attributes="href item_link;
                                          class string:$item_type_class $item_wf_state_class url;

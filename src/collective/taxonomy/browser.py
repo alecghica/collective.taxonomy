@@ -119,7 +119,7 @@ class TaxonomyCollectionView(CollectionView):
     def _get_taxonomy_utilities(self):
         # import pdb; pdb.set_trace()
         sm = getSite().getSiteManager()
-        return sm.getUtilitiesFor(ITaxonomy)       
+        return sm.getUtilitiesFor(ITaxonomy)
 
     def resolveTaxonomyTitle(self, fieldname):
         """ resolve taxonolomy title from behavior.
@@ -145,7 +145,6 @@ class TaxonomyCollectionView(CollectionView):
                 continue
             behavior = sm.queryUtility(IBehavior, name=util.getGeneratedName())
             taxonomy_field_prefix = behavior.field_prefix
-        # print(fieldname)
         if not taxonomies:
             return value
         taxonomy_shortname = fieldname[len(taxonomy_field_prefix) :]
@@ -157,5 +156,4 @@ class TaxonomyCollectionView(CollectionView):
         lang = api.portal.get_current_language()
         lang = lang in taxonomy.data and lang or taxonomy.default_language
         translated_terms = [taxonomy.translate(v, target_language=lang) for v in value]
-        # print(taxonomy_title)
         return ", ".join(translated_terms)
