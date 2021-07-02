@@ -85,6 +85,17 @@
       allowed_interface=".interfaces.ITaxonomyView"
       />
 
+  <browser:page
+      name="tabular_view"
+      template="listing_tabular.pt"
+      menu="plone_displayviews"
+      title="Tabular view"
+      for="plone.app.contenttypes.behaviors.collection.ISyndicatableCollection"
+      class=".browser.TaxonomyCollectionView"
+      permission="zope2.View"
+      layer=".interfaces.IBrowserLayer"
+      />
+
   <adapter
       name="taxonomy"
       for="* *"
@@ -124,16 +135,6 @@
       class=".jsonimpl.ImportJson"
       permission="cmf.ManagePortal"
       layer=".interfaces.IBrowserLayer"
-      />
-
-  <browser:page
-      name="tabular_view"
-      template="listing_tabular.pt"
-      menu="plone_displayviews"
-      title="Tabular view"
-      for="plone.app.contenttypes.behaviors.collection.ISyndicatableCollection"
-      class=".browser.TaxonomyCollectionView"
-      permission="zope2.View"
       />
 
   <adapter
