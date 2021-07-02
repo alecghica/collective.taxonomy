@@ -30,7 +30,7 @@ build-backend:
 	./venv/bin/pip install -r requirements.txt
 	./venv/bin/buildout bootstrap
 ifeq ("$(NOT_TRAVIS_OR_PYTHON3_PLONE52)", "true")
-	./venv/bin/pip install black
+	./venv/bin/pip install black[d]
 endif
 	bin/buildout
 
