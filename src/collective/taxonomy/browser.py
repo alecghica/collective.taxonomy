@@ -1,3 +1,4 @@
+import Missing
 from collective.taxonomy.interfaces import ITaxonomy
 from plone import api
 from plone.app.contenttypes.browser.collection import CollectionView
@@ -102,7 +103,8 @@ class TaxonomyCollectionView(CollectionView):
             "last_comment_date",
         ]:
             value = self.toLocalizedTime(value, long_format=1)
-
+        if value == Missing.Value:
+            value = ""
         value = self.resolveTaxonomyValue(fieldname, value)
         return {
             "value": value,
@@ -110,7 +112,7 @@ class TaxonomyCollectionView(CollectionView):
 
     def tabular_field_label(self, field):
         """Return the internationalized label (Message object) corresponding
-           to the field.
+        to the field.
         """
         label = get_field_label(field)
         label = self.resolveTaxonomyTitle(label)
@@ -122,8 +124,7 @@ class TaxonomyCollectionView(CollectionView):
         return sm.getUtilitiesFor(ITaxonomy)
 
     def resolveTaxonomyTitle(self, fieldname):
-        """ resolve taxonolomy title from behavior.
-        """
+        """resolve taxonolomy title from behavior."""
         utilities = self._get_taxonomy_utilities()
         sm = getSite().getSiteManager()
         for uname, util in utilities:
