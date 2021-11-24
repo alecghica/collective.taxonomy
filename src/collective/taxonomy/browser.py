@@ -149,7 +149,7 @@ class TaxonomyCollectionView(CollectionView):
         if not taxonomies:
             return value
         taxonomy_shortname = fieldname[len(taxonomy_field_prefix) :]
-        if not taxonomy_shortname in taxonomies:
+        if taxonomy_shortname not in taxonomies:
             return value
         taxonomy = queryUtility(ITaxonomy, name=taxonomies.get(taxonomy_shortname))
         if not taxonomy:
