@@ -31,3 +31,5 @@ share/
 pip-selfcheck.json
 /venv
 /.vscode/settings.json
+pyvenv.cfg
+lib64
